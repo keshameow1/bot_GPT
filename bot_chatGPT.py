@@ -28,8 +28,8 @@ async def handle_message(message: aiogram.types.Message):
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=prompt,
-        temperature=0.5,
-        max_tokens=60,
+        temperature=1.0,
+        max_tokens=2048,
         top_p=1.0,
         frequency_penalty=0.5,
         presence_penalty=0.0,
@@ -37,7 +37,7 @@ async def handle_message(message: aiogram.types.Message):
     )
 
     # Отправляем сгенерированный ответ пользователю
-    await bot.send_message(chat_id=message.chat.id, text=response.choices[0].text)
+    await bot.send_message(chat_id=message.chat.id, text="Мне нужно подумать...\n" + response.choices[0].text)
 
 
 if __name__ == '__main__':
