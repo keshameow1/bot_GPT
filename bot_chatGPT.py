@@ -37,7 +37,7 @@ async def handle_message(message: aiogram.types.Message):
     )
 
     # Отправляем сгенерированный ответ пользователю
-    await bot.send_message(text = "Мне нужно подумать...\n")
+    await bot.send_message(chat_id=message.chat.id, text = "Мне нужно подумать...\n")
     await bot.send_message(chat_id=message.chat.id, text=response.choices[0].text)
 
 
